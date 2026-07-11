@@ -247,3 +247,40 @@ body::before{
     }
 
 }
+/* ===== BUSCADOR ===== */
+
+.buscador{
+
+    margin:25px;
+
+}
+
+.buscador input{
+
+    width:320px;
+
+    max-width:90%;
+
+    padding:15px 20px;
+
+    border-radius:30px;
+
+    border:3px solid #ffc8dd;
+
+    outline:none;
+
+    font-size:18px;
+
+    font-family:'Quicksand',sans-serif;
+
+    transition:.3s;
+
+}
+
+.buscador input:focus{
+
+    border-color:#ff6f91;
+
+    box-shadow:0 0 15px rgba(255,111,145,.3);
+
+}
