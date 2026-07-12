@@ -1,3 +1,7 @@
+// ===========================
+// BUSCADOR
+// ===========================
+
 const buscador = document.getElementById("buscarPokemon");
 
 const productos = document.querySelectorAll(".producto");
@@ -19,6 +23,23 @@ buscador.addEventListener("input", () => {
             producto.style.display = "none";
 
         }
+
+    });
+
+});
+
+
+// ===========================
+// CARTAS VOLTEABLES
+// ===========================
+
+const cartas = document.querySelectorAll(".carta-3d");
+
+cartas.forEach(carta => {
+
+    carta.addEventListener("click", () => {
+
+        carta.classList.toggle("volteada");
 
     });
 
