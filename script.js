@@ -1,46 +1,38 @@
-// ===========================
-// BUSCADOR
-// ===========================
 
 const buscador = document.getElementById("buscarPokemon");
 
-const productos = document.querySelectorAll(".producto");
+const productosEnPagina = document.querySelectorAll(".producto");
 
-buscador.addEventListener("input", () => {
+if (buscador) {
 
-    const texto = buscador.value.toLowerCase();
+    buscador.addEventListener("input", () => {
 
-    productos.forEach(producto => {
+        const texto = buscador.value.toLowerCase();
 
-        const nombre = producto.querySelector("h3").textContent.toLowerCase();
+        productosEnPagina.forEach(producto => {
 
-        if(nombre.includes(texto)){
+            const nombre = producto.querySelector("h3").textContent.toLowerCase();
 
-            producto.style.display = "block";
+            if (nombre.includes(texto)) {
+                producto.style.display = "block";
+            } else {
+                producto.style.display = "none";
+            }
 
-        }else{
-
-            producto.style.display = "none";
-
-        }
+        });
 
     });
 
-});
-
-
-// ===========================
-// CARTAS VOLTEABLES
-// ===========================
+}
 
 const cartas = document.querySelectorAll(".carta-3d");
 
 cartas.forEach(carta => {
 
     carta.addEventListener("click", () => {
-
         carta.classList.toggle("volteada");
-
     });
 
 });
+
+

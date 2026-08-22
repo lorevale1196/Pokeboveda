@@ -22,7 +22,7 @@
 
     <div class="logo">
 
-        <img src="img/pokeball.png" alt="Pokeball" class="pokeball">
+        <img src="img/logo.png" alt="Pokebóveda" class="logo-img">
 
         <h1>Pokebóveda</h1>
 
@@ -31,6 +31,11 @@
     </div>
 
     <img src="img/togepi.png" class="eevee-header" alt="togepi">
+
+    <button id="botonCarrito" onclick="abrirCarrito()" aria-label="Abrir carrito">
+        🛒
+        <span id="cantidadCarrito">0</span>
+    </button>
 
 </header>
 
@@ -45,7 +50,6 @@
 
 <section class="cartas">
 
-<!-- ================= PIKACHU ================= -->
 
 <div class="producto">
 
@@ -65,13 +69,12 @@
 
     <h3>Pikachu ⚡</h3>
 
-    <p>$25.00</p>
+    <p>$25.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(1)">Comprar 🛒</button>
 
 </div>
 
-<!-- ================= CHARIZARD ================= -->
 
 <div class="producto">
 
@@ -91,13 +94,12 @@
 
     <h3>Charizard 🔥</h3>
 
-    <p>$80.00</p>
+    <p>$80.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(2)">Comprar 🛒</button>
 
 </div>
 
-<!-- ================= BULBASAUR ================= -->
 
 <div class="producto">
 
@@ -117,13 +119,12 @@
 
     <h3>Bulbasaur 🌱</h3>
 
-    <p>$15.00</p>
+    <p>$15.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(3)">Comprar 🛒</button>
 
 </div>
 
-<!-- ================= BLASTOISE ================= -->
 
 <div class="producto">
 
@@ -143,13 +144,12 @@
 
     <h3>Blastoise 💧</h3>
 
-    <p>$75.00</p>
+    <p>$75.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(4)">Comprar 🛒</button>
 
 </div>
 
-<!-- ================= VENUSAUR ================= -->
 
 <div class="producto">
 
@@ -169,12 +169,12 @@
 
     <h3>Venusaur 🌿</h3>
 
-    <p>$70.00</p>
+    <p>$70.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(5)">Comprar 🛒</button>
 
 </div>
-<!-- ================= MEWTWO ================= -->
+
 
 <div class="producto">
 
@@ -194,13 +194,13 @@
 
     <h3>Mewtwo 🧠</h3>
 
-    <p>$90.00</p>
+    <p>$90.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(6)">Comprar 🛒</button>
 
 </div>
 
-<!-- ================= ZAPDOS ================= -->
+
 
 <div class="producto">
 
@@ -220,13 +220,13 @@
 
     <h3>Zapdos ⚡</h3>
 
-    <p>$65.00</p>
+    <p>$65.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(7)">Comprar 🛒</button>
 
 </div>
 
-<!-- ================= RAICHU ================= -->
+
 
 <div class="producto">
 
@@ -246,13 +246,13 @@
 
     <h3>Raichu ⚡</h3>
 
-    <p>$40.00</p>
+    <p>$40.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(8)">Comprar 🛒</button>
 
 </div>
 
-<!-- ================= GYARADOS ================= -->
+
 
 <div class="producto">
 
@@ -272,13 +272,40 @@
 
     <h3>Gyarados 🌊</h3>
 
-    <p>$55.00</p>
+    <p>$55.000</p>
 
-    <button>Comprar 🛒</button>
+    <button onclick="addToCart(9)">Comprar 🛒</button>
 
 </div>
 
 </section>
+
+
+<div id="overlayCarrito" onclick="cerrarCarrito()"></div>
+
+
+
+<aside id="panelCarrito">
+
+    <button class="cerrarVentanaCarrito" onclick="cerrarCarrito()">
+        ✕
+    </button>
+
+    <h2>🛒 Mi carrito</h2>
+
+    <div id="listaCarrito"></div>
+
+    <div class="totalCarrito">
+        Total: <span id="totalCarrito">$0</span>
+    </div>
+
+    <button id="comprarTodo" onclick="finalizarCompra()">
+        💗 Finalizar compra
+    </button>
+
+</aside>
+
+<div id="mensajeCarrito"></div>
 
 <footer>
 
@@ -286,6 +313,8 @@
 
 </footer>
 
+<script src="data.js"></script>
+<script src="cart.js"></script>
 <script src="script.js"></script>
 
 </body>
