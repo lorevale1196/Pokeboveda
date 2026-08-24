@@ -2,292 +2,100 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Pokebóveda</title>
-
+    <title>Pokebóveda - Tienda Pokémon TCG</title>
     <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
+    <!-- ENCABEZADO / LOGO -->
+    <header>
+        <div class="logo">
+            <img src="img/pokeball.png" alt="Pokeball" class="pokeball">
+            <h1>Pokebóveda</h1>
+            <p>✨ Cartas Pokémon TCG Originales & Coleccionables ✨</p>
+        </div>
+    </header>
 
-    <img src="img/pikachu.png" class="pikachu-header" alt="Pikachu">
-
-    <div class="logo">
-
-        <img src="img/pokeball.png" alt="Pokeball" class="pokeball">
-
-        <h1>Pokebóveda</h1>
-
-        <p>✨ Tu tienda cute de cartas Pokémon ✨</p>
-
+    <!-- BARRA DE BÚSQUEDA -->
+    <div class="contenedor-busqueda">
+        <input type="text" id="buscarPokemon" placeholder="🔍 Buscar carta Pokémon por nombre...">
     </div>
 
-    <img src="img/togepi.png" class="eevee-header" alt="togepi">
-
-</header>
-
-<h2>✨ Cartas disponibles ✨</h2>
-
-<div class="buscador">
-    <input
-        type="text"
-        id="buscarPokemon"
-        placeholder="🔍 Buscar un Pokémon...">
-</div>
-
-<section class="cartas">
-
-<!-- ================= PIKACHU ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://assets.tcgdex.net/en/base/base1/58/high.png">
+    <!-- CONTENEDOR PRINCIPAL DE CARTAS -->
+    <main>
+        <div id="contenedorCartas" class="contenedor-productos">
+            <!-- Las 150 cartas TCG se cargarán dinámicamente desde script.js -->
         </div>
+    </main>
 
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
+    <!-- SECCIÓN DE FORMULARIO DE SOLICITUD -->
+    <section class="seccion-solicitud">
+        <h2>💌 ¿Buscas una carta en específico?</h2>
+        <p>Déjanos tus datos y el Pokémon que buscas. ¡Nosotros te lo conseguimos!</p>
+        
+        <form id="formSolicitud" class="form-cute">
+            <div class="grupo-input">
+                <label for="nombreCliente">Tu Nombre:</label>
+                <input type="text" id="nombreCliente" placeholder="Ej: Ash Ketchum" required>
+            </div>
+            
+            <div class="grupo-input">
+                <label for="emailCliente">Correo Electrónico:</label>
+                <input type="email" id="emailCliente" placeholder="Ej: entrenador@pokeboveda.com" required>
+            </div>
+            
+            <div class="grupo-input">
+                <label for="nombrePokemon">Pokémon o Carta Deseada:</label>
+                <input type="text" id="nombrePokemon" placeholder="Ej: Umbreon VMAX Alt Art" required>
+            </div>
+            
+            <div class="grupo-input">
+                <label for="mensajeCliente">Detalles Adicionales:</label>
+                <textarea id="mensajeCliente" rows="3" placeholder="Ej: Busco la edición en idioma español y estado Mint."></textarea>
+            </div>
+            
+            <button type="submit" class="btn-enviar">Enviar Solicitud 🚀</button>
+        </form>
+        
+        <p id="mensajeExito" class="mensaje-exito" style="display: none;"></p>
+    </section>
+
+    <!-- CHATBOT ASESOR FLOTANTE -->
+    <div id="contenedorChatbot">
+        <button id="btnChatbot" class="btn-flotante">💬 Chat</button>
+
+        <div id="ventanaChat" class="ventana-chat" style="display: none;">
+            <div class="chat-header">
+                <h3>✨ Pokebot ✨</h3>
+                <button id="btnCerrarChat" class="btn-cerrar-x">✖</button>
+            </div>
+            
+            <div id="chatMensajes" class="chat-mensajes">
+                <div class="mensaje bot">
+                    ¡Hola! 🌸 Soy Pokebot, tu asesor Pokémon. ¿Buscas cartas para jugar torneos, para coleccionar o de algún tipo en específico?
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="inputChat" placeholder="Escribe tu duda aquí..." />
+                <button id="btnEnviarChat">Send 💌</button>
+            </div>
         </div>
-
     </div>
 
-    <h3>Pikachu ⚡</h3>
-
-    <p>$25.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-
-<!-- ================= CHARIZARD ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://assets.tcgdex.net/en/base/base1/4/high.png">
-        </div>
-
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
-        </div>
-
-    </div>
-
-    <h3>Charizard 🔥</h3>
-
-    <p>$80.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-
-<!-- ================= BULBASAUR ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://assets.tcgdex.net/en/base/base1/44/high.png">
-        </div>
-
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
-        </div>
-
-    </div>
-
-    <h3>Bulbasaur 🌱</h3>
-
-    <p>$15.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-
-<!-- ================= BLASTOISE ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://images.pokemontcg.io/base1/2_hires.png">
-        </div>
-
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
-        </div>
-
-    </div>
-
-    <h3>Blastoise 💧</h3>
-
-    <p>$75.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-
-<!-- ================= VENUSAUR ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://images.pokemontcg.io/base1/15_hires.png">
-        </div>
-
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
-        </div>
-
-    </div>
-
-    <h3>Venusaur 🌿</h3>
-
-    <p>$70.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-<!-- ================= MEWTWO ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://images.pokemontcg.io/base1/10_hires.png">
-        </div>
-
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
-        </div>
-
-    </div>
-
-    <h3>Mewtwo 🧠</h3>
-
-    <p>$90.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-
-<!-- ================= ZAPDOS ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://images.pokemontcg.io/base1/16_hires.png">
-        </div>
-
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
-        </div>
-
-    </div>
-
-    <h3>Zapdos ⚡</h3>
-
-    <p>$65.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-
-<!-- ================= RAICHU ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://images.pokemontcg.io/base1/14_hires.png">
-        </div>
-
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
-        </div>
-
-    </div>
-
-    <h3>Raichu ⚡</h3>
-
-    <p>$40.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-
-<!-- ================= GYARADOS ================= -->
-
-<div class="producto">
-
-    <div class="carta-3d">
-
-        <div class="cara frente">
-            <img class="carta-real"
-            src="https://images.pokemontcg.io/base1/6_hires.png">
-        </div>
-
-        <div class="cara atras">
-            <img class="carta-real"
-            src="img/pokemon-back.png">
-        </div>
-
-    </div>
-
-    <h3>Gyarados 🌊</h3>
-
-    <p>$55.00</p>
-
-    <button>Comprar 🛒</button>
-
-</div>
-
-</section>
-
-<footer>
-
-    💗 Pokebóveda 2026 💗
-
-</footer>
-
-<script src="script.js"></script>
-
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        💗 Pokebóveda 2026 - Todos los derechos reservados 💗
+    </footer>
+
+    <!-- SCRIPT DE JAVASCRIPT -->
+    <script src="script.js"></script>
 </body>
 
 </html>

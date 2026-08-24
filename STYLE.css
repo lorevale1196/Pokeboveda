@@ -1,606 +1,369 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Pacifico&display=swap');
-
 /*==========================
-GENERAL
+ESTILOS GENERALES Y RESETS
 ==========================*/
 
-body{
-
-    background-color:#fff0f6;
-
-    font-family:'Quicksand',sans-serif;
-
-    text-align:center;
-
-    margin:0;
-
-    color:#5c4b51;
-
-    position:relative;
-
-    overflow-x:hidden;
-
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fff4f7;
+    color: #5c4b51;
+    text-align: center;
 }
 
-/*==========================
-HEADER
-==========================*/
-
-header{
-
-    background:linear-gradient(180deg,#ffeaf3,#ffd6e7);
-
-    padding:50px 20px 35px;
-
-    border-bottom:5px solid #ffb3c6;
-
-    position:relative;
-
-    overflow:hidden;
-
-    box-shadow:0 8px 20px rgba(255,182,193,.35);
-
+/* ENCABEZADO Y LOGO */
+header {
+    background: linear-gradient(135deg, #ffc8dd, #ffafcc);
+    padding: 25px 15px;
+    box-shadow: 0 4px 15px rgba(255, 175, 204, 0.4);
 }
 
-.logo{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    position:relative;
-
-    z-index:10;
-
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-header h1{
-
-    font-family:'Pacifico',cursive;
-
-    font-size:78px;
-
-    color:#ff6f91;
-
-    margin:0;
-
-    font-weight:normal;
-
-    text-shadow:
-    2px 2px #ffd6e7,
-    5px 5px rgba(255,255,255,.5);
-
+.pokeball {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 5px;
 }
 
-header p{
-
-    font-size:23px;
-
-    color:#b66dff;
-
-    margin-top:10px;
-
-    letter-spacing:1px;
-
+header h1 {
+    margin: 5px 0 0 0;
+    color: #ff3b6b;
+    font-size: 32px;
 }
 
-/*==========================
-POKEBALL
-==========================*/
-
-.pokeball{
-
-    width:110px;
-
-    margin-bottom:18px;
-
-    filter:drop-shadow(0 10px 18px rgba(0,0,0,.20));
-
-    animation:flotar 3s ease-in-out infinite;
-
-    transition:.3s;
-
+header p {
+    margin: 3px 0 0 0;
+    color: #6a4c93;
+    font-weight: bold;
 }
 
-.pokeball:hover{
-
-    transform:scale(1.1) rotate(15deg);
-
+/* BARRA DE BÚSQUEDA */
+.contenedor-busqueda {
+    margin: 25px auto;
+    max-width: 500px;
+    padding: 0 15px;
 }
 
-@keyframes flotar{
-
-    0%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-10px);
-
-    }
-
-    100%{
-
-        transform:translateY(0);
-
-    }
-
+#buscarPokemon {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid #ffc8dd;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    font-family: 'Quicksand', sans-serif;
 }
 
-/*==========================
-ESTRELLAS
-==========================*/
-
-.logo::before{
-
-    content:"✨";
-
-    position:absolute;
-
-    left:-120px;
-
-    top:20px;
-
-    font-size:38px;
-
-    animation:estrella1 2s infinite;
-
+/* CONTENEDOR DE PRODUCTOS (GRID CENTRADO) */
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+    align-items: start;
 }
 
-.logo::after{
-
-    content:"⭐";
-
-    position:absolute;
-
-    right:-120px;
-
-    top:50px;
-
-    font-size:34px;
-
-    animation:estrella2 2.8s infinite;
-
+/* TARJETA INDIVIDUAL */
+.producto {
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 220px;
+    box-sizing: border-box;
 }
 
-@keyframes estrella1{
-
-    0%,100%{
-
-        opacity:.3;
-
-        transform:scale(.8);
-
-    }
-
-    50%{
-
-        opacity:1;
-
-        transform:scale(1.3);
-
-    }
-
+.producto h3 {
+    font-size: 16px;
+    margin: 12px 0 4px;
+    color: #5c4b51;
 }
 
-@keyframes estrella2{
-
-    0%,100%{
-
-        opacity:1;
-
-        transform:scale(1);
-
-    }
-
-    50%{
-
-        opacity:.2;
-
-        transform:scale(.7);
-
-    }
-
+/* EFECTO 3D DE LA CARTA */
+.carta-3d {
+    width: 180px;
+    height: 250px;
+    perspective: 1000px;
+    cursor: pointer;
 }
 
-/*==========================
-POKEMON HEADER
-==========================*/
-
-.pikachu-header{
-
-    position:absolute;
-
-    left:20px;
-
-    bottom:0;
-
-    width:170px;
-
-    z-index:5;
-
-    transition:.3s;
-
+.carta-3d .cara {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
-.eevee-header{
-
-    position:absolute;
-
-    right:20px;
-
-    bottom:0;
-
-    width:170px;
-
-    z-index:5;
-
-    transition:.3s;
-
+.carta-3d .frente {
+    transform: rotateY(0deg);
 }
 
-.pikachu-header:hover{
-
-    transform:rotate(-8deg) scale(1.08);
-
+.carta-3d .atras {
+    transform: rotateY(180deg);
 }
 
-.eevee-header:hover{
-
-    transform:rotate(8deg) scale(1.08);
-
+.carta-3d.volteada .frente {
+    transform: rotateY(-180deg);
 }
 
-/*==========================
-BUSCADOR
-==========================*/
-
-.buscador{
-
-    margin:25px;
-
+.carta-3d.volteada .atras {
+    transform: rotateY(0deg);
 }
 
-.buscador input{
-
-    width:320px;
-
-    max-width:90%;
-
-    padding:15px 20px;
-
-    border-radius:30px;
-
-    border:3px solid #ffc8dd;
-
-    outline:none;
-
-    font-size:18px;
-
-    font-family:'Quicksand',sans-serif;
-
-    transition:.3s;
-
+.carta-real {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.buscador input:focus{
-
-    border-color:#ff6f91;
-
-    box-shadow:0 0 15px rgba(255,111,145,.35);
-
-}
-/*==========================
-FONDO POKÉMON ANIMADO
-==========================*/
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:-2;
-
-    opacity:.12;
-
-    background-image:
-    url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"),
-    url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"),
-    url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
-    url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"),
-    url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"),
-    url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png");
-
-    background-repeat:repeat;
-
-    background-size:
-    70px,
-    65px,
-    70px,
-    65px,
-    70px,
-    60px;
-
-    animation:fondoPokemon 70s linear infinite;
-
+/* PRECIOS EN USD Y COP */
+.precios-contenedor {
+    margin: 6px 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-@keyframes fondoPokemon{
-
-    from{
-
-        background-position:
-        0 0,
-        300px 150px,
-        600px 350px,
-        900px 100px,
-        1200px 250px,
-        1500px 500px;
-
-    }
-
-    to{
-
-        background-position:
-        500px 900px,
-        -200px 1200px,
-        900px 1600px,
-        300px 1500px,
-        1600px 1800px,
-        700px 1700px;
-
-    }
-
+.precio-usd {
+    font-size: 18px;
+    font-weight: bold;
+    color: #c77dff;
+    margin: 0;
 }
 
-/*==========================
-CONTENEDOR CARTAS
-==========================*/
-
-.cartas{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:35px;
-
-    padding:40px;
-
+.precio-cop {
+    font-size: 13px;
+    font-weight: bold;
+    color: #ff6f91;
+    margin: 0;
 }
 
-/*==========================
-PRODUCTOS
-==========================*/
-
-.producto{
-
-    background:white;
-
-    width:220px;
-
-    padding:20px;
-
-    border-radius:25px;
-
-    box-shadow:0 10px 25px rgba(255,120,150,.25);
-
-    transition:.3s;
-
+/* BOTÓN COMPRAR */
+.btn-comprar {
+    background: #ff6f91;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-.producto:hover{
-
-    transform:translateY(-10px) scale(1.05);
-
-    box-shadow:0 20px 40px rgba(255,120,150,.45);
-
+.btn-comprar:hover {
+    background: #ff5d8f;
 }
 
-.producto h3{
-
-    color:#ff6f91;
-
-    font-size:24px;
-
+/* FORMULARIO DE SOLICITUD */
+.seccion-solicitud {
+    background: white;
+    max-width: 550px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 2px solid #ffe6ee;
 }
 
-.producto p{
-
-    font-size:20px;
-
-    font-weight:bold;
-
-    color:#c77dff;
-
+.seccion-solicitud h2 {
+    color: #ff6f91;
+    margin-top: 0;
 }
 
-/*==========================
-BOTÓN
-==========================*/
-
-button{
-
-    background:#ff8fab;
-
-    color:white;
-
-    border:none;
-
-    padding:12px 25px;
-
-    border-radius:25px;
-
-    font-family:'Quicksand',sans-serif;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
+.form-cute {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+    margin-top: 20px;
 }
 
-button:hover{
-
-    background:#ff5d8f;
-
-    transform:scale(1.05);
-
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-/*==========================
-CARTA 3D
-==========================*/
-
-.carta-3d{
-
-    width:180px;
-
-    height:251px;
-
-    margin:auto;
-
-    position:relative;
-
-    transform-style:preserve-3d;
-
-    transition:transform .8s;
-
-    cursor:pointer;
-
+.grupo-input label {
+    font-weight: bold;
+    color: #6a4c93;
+    font-size: 14px;
 }
 
-.carta-3d.volteada{
-
-    transform:rotateY(180deg);
-
+.grupo-input input, .grupo-input textarea {
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 2px solid #ffc8dd;
+    outline: none;
+    font-family: 'Quicksand', sans-serif;
 }
 
-.cara{
-
-    position:absolute;
-
-    width:100%;
-
-    height:100%;
-
-    backface-visibility:hidden;
-
-    border-radius:15px;
-
+.btn-enviar {
+    background: #b5e2fa;
+    color: #2b2d42;
+    border: none;
+    padding: 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.cara img{
-
-    width:100%;
-
-    height:100%;
-
-    border-radius:15px;
-
+.mensaje-exito {
+    color: #2a9d8f;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
-.atras{
-
-    transform:rotateY(180deg);
-
+/* CHATBOT CUTE */
+#contenedorChatbot {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
 }
 
-.producto:hover .carta-3d{
-
-    transform:translateY(-8px);
-
+.btn-flotante {
+    background: #ff6f91;
+    color: white;
+    border: none;
+    padding: 15px 22px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(255, 111, 145, 0.4);
+    cursor: pointer;
+    transition: transform 0.3s;
 }
 
-.carta-3d.volteada:hover{
-
-    transform:rotateY(180deg) translateY(-8px);
-
+.btn-flotante:hover {
+    transform: scale(1.1);
 }
 
-/*==========================
-BRILLO
-==========================*/
-
-.carta-3d::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-120%;
-
-    width:70%;
-
-    height:100%;
-
-    background:linear-gradient(
-
-        120deg,
-
-        transparent,
-
-        rgba(255,255,255,.7),
-
-        transparent
-
-    );
-
-    transform:skewX(-25deg);
-
-    border-radius:15px;
-
+.ventana-chat {
+    width: 320px;
+    height: 420px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 3px solid #ffc8dd;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 65px;
+    right: 0;
 }
 
-.carta-3d:hover::after{
-
-    animation:brillo .9s;
-
+.chat-header {
+    background: linear-gradient(135deg, #ffeaf3, #ffd6e7);
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ffb3c6;
 }
 
-@keyframes brillo{
-
-    from{
-
-        left:-120%;
-
-    }
-
-    to{
-
-        left:180%;
-
-    }
-
+.chat-header h3 {
+    margin: 0;
+    color: #ff6f91;
+    font-size: 18px;
 }
 
-/*==========================
-FOOTER
-==========================*/
+.btn-cerrar-x {
+    background: transparent;
+    color: #ff6f91;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
 
-footer{
+.chat-mensajes {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff8fa;
+}
 
-    background:#ffc8dd;
+.mensaje {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+}
 
-    padding:20px;
+.mensaje.bot {
+    background: #ffe6ee;
+    color: #5c4b51;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
 
-    margin-top:40px;
+.mensaje.usuario {
+    background: #c77dff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
 
-    font-size:18px;
+.chat-input-area {
+    display: flex;
+    padding: 10px;
+    background: white;
+    border-top: 2px solid #ffc8dd;
+    gap: 6px;
+}
 
-    font-weight:bold;
+.chat-input-area input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 15px;
+    border: 2px solid #ffc8dd;
+    outline: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+}
 
+.chat-input-area button {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 15px;
+    background: #ff6f91;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    padding: 20px;
+    background: #ffd6e7;
+    color: #6a4c93;
+    font-weight: bold;
+    margin-top: 40px;
 }
