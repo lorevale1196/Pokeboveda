@@ -14,10 +14,37 @@ body {
 /* ENCABEZADO Y LOGO */
 header {
     background: linear-gradient(135deg, #ffc8dd, #ffafcc);
-    padding: 25px 15px;
+    padding: 15px 10px;
     box-shadow: 0 4px 15px rgba(255, 175, 204, 0.4);
 }
 
+/* ¿Buscas una carta en específico? */
+header {
+    position: relative;
+}
+
+.link-buscar-carta {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+    color: #ff3b6b;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+
+    background: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.2s ease;
+}
+
+.link-buscar-carta:hover {
+    background: #ffc8dd;
+    transform: translateY(-2px);
+}
 .logo {
     display: flex;
     flex-direction: column;
@@ -25,24 +52,76 @@ header {
     justify-content: center;
 }
 
-.pokeball {
-    width: 70px;
-    height: 70px;
+
+    .logo-img {
+    width: 300px;
+    height: 300px;
     object-fit: contain;
     margin-bottom: 5px;
+    animation: latido-logo 2s infinite ease-in-out;
+}
+
+.titulo-con-pokemon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+}
+
+.titulo-con-pokemon h1 {
+    margin: 0;
+}
+
+.pokemon-decoracion {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
 }
 
 header h1 {
     margin: 5px 0 0 0;
     color: #ff3b6b;
-    font-size: 32px;
+    font-size: 60px;
+    font-family: "Satisfy", cursive;
+
 }
+
 
 header p {
     margin: 3px 0 0 0;
     color: #6a4c93;
     font-weight: bold;
 }
+
+/* ==========================  
+EFECTO MÁQUINA DE ESCRIBIR
+========================== */
+
+.frase-maquina {
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #6a4c93;
+
+    animation: escribir-frase 6s steps(45, end) infinite;
+}
+
+@keyframes escribir-frase {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
 
 /* BARRA DE BÚSQUEDA */
 .contenedor-busqueda {
@@ -276,7 +355,8 @@ header p {
 }
 
 .chat-header {
-    background: linear-gradient(135deg, #ffeaf3, #ffd6e7);
+    background: linear-gradient(135deg, #ffeaf3, #ff3b6b);
+
     padding: 12px 18px;
     display: flex;
     justify-content: space-between;
@@ -358,7 +438,246 @@ header p {
     border: none;
     cursor: pointer;
 }
+/* ==========================
+    CARRITO DE COMPRAS
+========================== */
 
+/* ZONA DEL BOTÓN DEL CARRITO */
+.zona-carrito {
+    position: sticky;
+    top: 15px;
+    z-index: 1500;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 25px;
+}
+
+/* BOTÓN PRINCIPAL */
+#btnAbrirCarrito {
+    background: linear-gradient(135deg, #ff6f91, #ff3b6b);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(255, 111, 145, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#btnAbrirCarrito:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(255, 111, 145, 0.45);
+}
+
+/* NUMERO DE PRODUCTOS */
+#cantidadCarrito {
+    background: white;
+    color: #ff3b6b;
+    padding: 3px 8px;
+    border-radius: 50%;
+    margin-left: 5px;
+    font-size: 13px;
+}
+
+/* FONDO OSCURO DETRAS DEL CARRITO */
+.overlay-carrito {
+    position: fixed;
+    inset: 0;
+    background: rgba(92, 75, 81, 0.35);
+    z-index: 1998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.overlay-carrito.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* PANEL DEL CARRITO */
+.panel-carrito {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 380px;
+    max-width: 90%;
+    height: 100vh;
+    background: #fff4f7;
+    z-index: 1999;
+    box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
+    transition: right 0.35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CUANDO EL CARRITO ESTÁ ABIERTO */
+.panel-carrito.open {
+    right: 0;
+}
+
+/* ENCABEZADO */
+.encabezado-carrito {
+    background: linear-gradient(135deg, #ffc8dd, #ffafcc);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(255, 175, 204, 0.35);
+}
+
+.encabezado-carrito h2 {
+    margin: 0;
+    color: #ff3b6b;
+    font-size: 22px;
+}
+
+/* BOTÓN X */
+.btn-cerrar-carrito {
+    background: white;
+    color: #ff6f91;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* LISTA DE PRODUCTOS */
+#listaCarrito {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* PRODUCTO DENTRO DEL CARRITO */
+.productoCarrito {
+    background: white;
+    border-radius: 18px;
+    padding: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* IMAGEN PEQUEÑA */
+.miniaturaCarrito {
+    width: 60px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* INFORMACIÓN */
+.infoCarrito {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.nombreCarrito {
+    font-weight: bold;
+    color: #5c4b51;
+    font-size: 14px;
+}
+
+.precioCarrito {
+    color: #ff6f91;
+    font-weight: bold;
+}
+
+/* CONTROLES DE CANTIDAD */
+.cantidadControles {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cantidadControles button {
+    background: #ffc8dd;
+    color: #5c4b51;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* BOTÓN ELIMINAR */
+.eliminarProducto {
+    background: transparent;
+    color: #ff6f91;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* CARRITO VACÍO */
+.carritoVacio {
+    color: #8e7dbe;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+/* PARTE INFERIOR */
+.resumen-carrito {
+    background: white;
+    padding: 20px;
+    border-top: 2px solid #ffc8dd;
+}
+
+.resumen-carrito p {
+    font-size: 18px;
+    color: #5c4b51;
+}
+
+/* TOTAL */
+#totalCarrito {
+    color: #ff3b6b;
+}
+
+/* FINALIZAR COMPRA */
+.btn-finalizar {
+    width: 100%;
+    background: #ff6f91;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 20px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-finalizar:hover {
+    background: #ff3b6b;
+}
+
+/* MENSAJE AL AGREGAR */
+.mensaje-carrito {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6f91;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 6px 15px rgba(255, 111, 145, 0.35);
+    z-index: 3000;
+    display: none;
+}
 /* FOOTER */
 footer {
     padding: 20px;
@@ -366,4 +685,137 @@ footer {
     color: #6a4c93;
     font-weight: bold;
     margin-top: 40px;
+}
+/* que baje bonito */
+html {
+    scroll-behavior: smooth;
+}
+.btn-subir {
+    margin: 20px auto 40px;
+    padding: 10px 20px;
+    background: #ff6f91;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 111, 145, 0.25);
+    transition: 0.2s ease;
+}
+
+.btn-subir:hover {
+    background: #ff3b6b;
+    transform: translateY(-2px);
+}
+
+/* ==========================
+    POKÉMON DECORATIVOS DEL TÍTULO
+========================== */
+
+.titulo-con-pokemon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 180px;
+}
+
+.titulo-con-pokemon h1 {
+    margin: 0;
+}
+
+.pokemon-decoracion {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+}
+
+/* Estilos para el contenedor de fondo */
+.pokemon-bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Mantiene la animación detrás de las cartas y contenido */
+  pointer-events: none; /* Permite hacer clic a través de las Pokébolas */
+  background-color: #fff0f5; /* Tono de fondo rosa muy claro (opcional) */
+}
+
+/* Base de la Pokébola usando bordes y gradientes tonales */
+.pokeball {
+  position: absolute;
+  bottom: -100px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* Dibujamos la Pokébola usando un gradiente rosado */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 105, 180, 0.35) 0%,
+    rgba(255, 105, 180, 0.35) 45%,
+    rgba(255, 182, 193, 0.8) 45%,
+    rgba(255, 182, 193, 0.8) 55%,
+    rgba(255, 255, 255, 0.4) 55%,
+    rgba(255, 255, 255, 0.4) 100%
+    );
+ border: 3px solid rgba(255, 105, 180, 0.4);
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.15);
+    animation: floatUp 12s infinite linear;
+}
+
+/* Botón central de la Pokébola */
+.pokeball::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    border: 3px solid rgba(255, 105, 180, 0.4);
+    border-radius: 50%;
+}
+
+/* Distribución, tamaños y tiempos aleatorios para dar variedad */
+.pokeball:nth-child(1) { left: 10%; width: 50px; height: 50px; animation-duration: 10s; animation-delay: 0s; }
+.pokeball:nth-child(2) { left: 25%; width: 80px; height: 80px; animation-duration: 15s; animation-delay: 2s; }
+.pokeball:nth-child(3) { left: 45%; width: 40px; height: 40px; animation-duration: 8s;  animation-delay: 4s; }
+.pokeball:nth-child(4) { left: 65%; width: 70px; height: 70px; animation-duration: 13s; animation-delay: 1s; }
+.pokeball:nth-child(5) { left: 80%; width: 50px; height: 50px; animation-duration: 11s; animation-delay: 5s; }
+.pokeball:nth-child(6) { left: 92%; width: 35px; height: 35px; animation-duration: 9s;  animation-delay: 3s; }
+
+/* Keyframes para el movimiento de elevación y rotación suave */
+@keyframes floatUp {
+0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+}
+10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ==========================
+   ANIMACIÓN DEL LOGO
+========================== */
+
+@keyframes latido-logo {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.07);
+    }
 }

@@ -69,9 +69,9 @@ function renderizarCartas(cartasAMostrar) {
             <div class="carta-3d">
                 <div class="cara frente">
                     <img class="carta-real" 
-                         src="${carta.image}" 
-                         alt="${carta.name}"
-                         onerror="this.onerror=null; this.src='img/pokemon-back.png';">
+                        src="${carta.image}" 
+                        alt="${carta.name}"
+                        onerror="this.onerror=null; this.src='img/pokemon-back.png';">
                 </div>
                 <div class="cara atras">
                     <img class="carta-real" src="img/pokemon-back.png" alt="Reverso Pokémon">
@@ -85,13 +85,21 @@ function renderizarCartas(cartasAMostrar) {
             <button class="btn-comprar">Comprar 🛒</button>
         `;
 
-        const carta3d = productoDiv.querySelector(".carta-3d");
-        carta3d.addEventListener("click", () => {
-            carta3d.classList.toggle("volteada");
-        });
+const carta3d = productoDiv.querySelector(".carta-3d");
 
-        contenedorCartas.appendChild(productoDiv);
-    });
+carta3d.addEventListener("click", () => {
+    carta3d.classList.toggle("volteada");
+});
+
+const botonComprar = productoDiv.querySelector(".btn-comprar");
+
+botonComprar.addEventListener("click", (e) => {
+    e.stopPropagation();
+    addToCart(carta.id);
+});
+
+contenedorCartas.appendChild(productoDiv);
+});
 }
 
 // ===========================
